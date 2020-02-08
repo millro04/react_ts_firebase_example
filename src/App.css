@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+
+.navbar-wrapper {
+  padding-top: 20px;
+}
