@@ -5,7 +5,6 @@ import { shallow, ShallowWrapper, configure, ReactWrapper, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
-
 test('Data Entry component renders', () => {
     const component: ShallowWrapper = shallow(<DataEntry />);
     expect(component).toMatchSnapshot();

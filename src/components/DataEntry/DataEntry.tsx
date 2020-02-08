@@ -1,5 +1,6 @@
 import React from 'react';
 import DataEntryView from './DataEntryView';
+import firebase from '../../services/Firebase/Firebase';
 
 const columns = [
   {
@@ -16,44 +17,57 @@ const columns = [
   },
 ];
 
-const tableData = [
-  {
-    date: '2020-02-01', book_name: 'Harry Potter 1', min_read: 60, id: 0
-  },
-  {
-    date: '2020-02-01', book_name: 'Harry Potter 2', min_read: 30, id: 1
-  }
-];
-
 interface IDataEntryState {
   bookData: any,
 }
 
 export default class DataEntry extends React.Component<any, IDataEntryState> {
+  firebaseRef: any;
   constructor(props: React.ReactPropTypes) {
       super(props);
       this.onRowAdd = this.onRowAdd.bind(this);
       this.onRowUpdate = this.onRowUpdate.bind(this);
       this.onRowDelete = this.onRowDelete.bind(this);
-      this.state = {bookData: null};
+      this.state = {bookData: []};
+      this.firebaseRef = firebase.firestore().collection('reading_logs');
   }
 
   componentDidMount() {
-    this.getBookData();
+    this.firebaseRef.onSnapshot(this.onReadingCollectionUpdate);
   }
 
-  getBookData() {
-    this.setState({bookData: tableData});
+  onReadingCollectionUpdate = (querySnapshot: any) => {
+    const bookData: any = [];
+    querySnapshot.forEach((doc: any) => {
+      const { book_name, date_read, minutes_read } = doc.data();
+      bookData.push(
+        {
+          date: date_read,
+          book_name: book_name,
+          min_read: minutes_read,
+          id: doc.id,
+        });
+        this.setState({
+          bookData
+       });
+    });
   }
 
   onRowAdd(newData: any) {
     return new Promise((resolve, reject) => {
-
       try {
-        const data = this.state.bookData;
-        data.push(newData);
-        this.setState({ bookData: data });
-        resolve();
+        this.firebaseRef.add({
+          book_name: newData.book_name,
+          minutes_read: parseInt(newData.min_read),
+          date_read: newData.date,
+        }).then((docRef: any) => {
+          console.log('Successfully added book data');
+          resolve();
+        })
+        .catch((error: any) => {
+          console.error("Error saving reading data: ", error);
+          reject();
+        });
       }
 
       catch {
@@ -66,12 +80,16 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
     return new Promise((resolve, reject) => {
 
       try {
-        const data = this.state.bookData;
-        data[newData.id] = newData;
-        this.setState({ bookData: data });
+        const updateRef = this.firebaseRef.doc(oldData.id);
+        updateRef.set({
+          date_read: newData.date,
+          minutes_read: newData.min_read,
+          book_name: newData.book_name,
+        }).then((docRef: any) => {
+          console.log('Update successful');
         resolve();
-      }
-
+      });
+    }
       catch {
         reject();
       }
@@ -82,13 +100,11 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
     return new Promise((resolve, reject) => {
 
       try {
-        let data = this.state.bookData;
-        const index = data.indexOf(oldData);
-        data.splice(index, 1);
-        this.setState({ bookData: data });
+        this.firebaseRef.doc(oldData.id).delete().then((docRef: any) => {
+        console.log('Delete successful');
         resolve();
-      }
-
+      });
+    }
       catch {
         reject();
       }
