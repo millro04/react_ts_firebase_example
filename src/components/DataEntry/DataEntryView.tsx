@@ -7,7 +7,8 @@ interface IDataEntryViewProps {
   tableData: any,
   onRowAdd: any,
   onRowUpdate: any,
-  onRowDelete: any
+  onRowDelete: any,
+  isLoading: boolean
 }
 
 export default class DataEntryView extends React.Component<IDataEntryViewProps, any> {
@@ -28,6 +29,7 @@ export default class DataEntryView extends React.Component<IDataEntryViewProps, 
             onRowUpdate: this.props.onRowUpdate,
             onRowDelete: this.props.onRowDelete
           }}
+          isLoading={this.props.isLoading}
         />
       </div>
     );

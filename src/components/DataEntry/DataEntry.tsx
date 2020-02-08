@@ -19,6 +19,7 @@ const columns = [
 
 interface IDataEntryState {
   bookData: any,
+  isLoading: boolean
 }
 
 export default class DataEntry extends React.Component<any, IDataEntryState> {
@@ -28,7 +29,7 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
       this.onRowAdd = this.onRowAdd.bind(this);
       this.onRowUpdate = this.onRowUpdate.bind(this);
       this.onRowDelete = this.onRowDelete.bind(this);
-      this.state = {bookData: []};
+      this.state = { bookData: [], isLoading: true };
       this.firebaseRef = firebase.firestore().collection('reading_logs');
   }
 
@@ -48,7 +49,8 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
           id: doc.id,
         });
         this.setState({
-          bookData
+          bookData,
+          isLoading: false,
        });
     });
   }
@@ -119,6 +121,7 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
         onRowAdd={this.onRowAdd}
         onRowUpdate={this.onRowUpdate}
         onRowDelete={this.onRowDelete}
+        isLoading={this.state.isLoading}
         />
     );
   }

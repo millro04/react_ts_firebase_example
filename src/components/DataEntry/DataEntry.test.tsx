@@ -76,6 +76,7 @@ test('DataEntryView snapshot test', () => {
             onRowAdd={onAdd}
             onRowUpdate={onUpdate}
             onRowDelete={onDelete}
+            isLoading={false}
         />
     );
     expect(component).toMatchSnapshot();
