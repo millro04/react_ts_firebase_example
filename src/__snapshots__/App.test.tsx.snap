@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="header-wrapper"
+  >
+    <header
+      className="header-text"
+    >
+      Reading Tracker
+    </header>
+  </div>
+</div>
+`;
