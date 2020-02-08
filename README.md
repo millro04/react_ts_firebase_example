@@ -14,6 +14,7 @@
 * Perform CRUD operations on resources in an external database
 * Unit testing on all components
 * Snapshot testing on all components
+* Testing with Jest and Enzyme
 * Continuous Integration via CircleCI on each commit
 * Separation of concerns using presentational components
 * React Routing
@@ -28,3 +29,5 @@ Next improvement steps on this repository would be the following:
 * Automate creation of Firebase database
 * Implement calendar picker on the DataEntry table
 * Enhance the Dashboard to include more stats - like total minutes read per book, etc.
+
+## Running The App

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
-import { RoutedTabs, NavTab } from "react-router-tabs";
+import { NavTab } from "react-router-tabs";
 import Header from './components/Header/Header';
 import DataEntry from './components/DataEntry/DataEntry';
 import Dashboard from './components/Dashboard/Dashboard';

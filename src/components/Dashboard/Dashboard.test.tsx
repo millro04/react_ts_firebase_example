@@ -24,3 +24,38 @@ test('Dashboard Component calls firebase onSnapshot when component is mounted', 
     const component: ShallowWrapper = shallow(<Dashboard />);
     expect(onSnapshot).toHaveBeenCalled();
 });
+
+test('formatBookDataForGraphs returns data in proper format', async () => {
+    // Arrange
+    const input = [
+        {
+            book_name: 'Book One',
+            min_read: 15,
+            date: '2020-02-01'
+        },
+        {
+            book_name: 'Book Two',
+            min_read: 20,
+            date: '2020-02-01'
+        }
+    ];
+    const expected = [
+        {
+            title: 'Minutes Read Over Time - Book One',
+            data: [15],
+            labels: ['2020-02-01']
+        },
+        {
+            title: 'Minutes Read Over Time - Book Two',
+            data: [20],
+            labels: ['2020-02-01']
+        }
+    ]
+    const component: ShallowWrapper = shallow(<Dashboard />).instance();
+    component.setState({ bookData: input });
+    // Act
+    const result = component.formatBookDataForGraphs();
+    // Assert
+    expect(result).toEqual(expected);
+    
+});
