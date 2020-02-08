@@ -1,7 +1,7 @@
-Reading Tracker is a web application designed to keep track of how many minutes I've read for various books. Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this project seemed like a good fit.
+**Reading Tracker** is a web application designed to keep track of how many minutes I've read for various books. Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this project seemed like a good fit.
 
 ## Features
-* Lets a user perform CRUD operations on their book entries
+* Allows a user to perform CRUD operations on their book entries
 * Provides a dashboard of graphs for each book
 
 ## Technology Used
@@ -16,6 +16,7 @@ Reading Tracker is a web application designed to keep track of how many minutes 
 * Snapshot testing on all components
 * Continuous Integration via CircleCI on each commit
 * Separation of concerns using presentational components
+* React Routing
 * Deployed live on Heroku
 
 ## Hosted Here
