@@ -68,12 +68,12 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
         })
         .catch((error: any) => {
           console.error("Error saving reading data: ", error);
-          reject();
+          reject(error);
         });
       }
 
-      catch {
-        reject();
+      catch(e) {
+        reject(e);
       }
   });
   }
@@ -92,8 +92,8 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
         resolve();
       });
     }
-      catch {
-        reject();
+      catch(e) {
+        reject(e);
       }
   });
   }
@@ -107,8 +107,8 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
         resolve();
       });
     }
-      catch {
-        reject();
+      catch(e) {
+        reject(e);
       }
   });
   }

@@ -8,14 +8,21 @@ const docResult = {
 };
 const get = jest.fn(() => Promise.resolve(docResult));
 const set = jest.fn();
+const add = jest.fn(() => Promise.resolve());
+const collection = () => {
+  return {
+    onSnapshot: jest.fn(),
+    add,
+  }
+};
 const doc = jest.fn(() => {
   return {
     set,
-    get
+    get,
   };
 });
 const firestore = () => {
-  return { doc };
+  return { doc, collection };
 };
 
-export { firestore };
+export { firestore, add };
