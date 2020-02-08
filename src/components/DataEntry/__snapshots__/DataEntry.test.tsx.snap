@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Data Entry View renders 1`] = `ShallowWrapper {}`;
+
+exports[`Data Entry component renders 1`] = `ShallowWrapper {}`;

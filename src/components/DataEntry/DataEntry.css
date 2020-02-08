@@ -1,0 +1,7 @@
+.data-entry-wrapper {
+    width: 100%;
+    padding-top: 25px;
+    display: flex;
+    align-Items: center;
+    justify-content: center;
+}

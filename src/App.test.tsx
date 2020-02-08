@@ -8,11 +8,8 @@ configure({adapter: new Adapter()});
 
 
 test('App component renders', () => {
-  const component: renderer.ReactTestRenderer = renderer.create(
-    <App />,
-  );
-  let tree: renderer.ReactTestRendererJSON | null = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  const component: ShallowWrapper = shallow(<App />);
+  expect(component).toMatchSnapshot();
 });
 
 

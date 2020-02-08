@@ -1,12 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import Header from './Header';
+import { shallow, ShallowWrapper, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({adapter: new Adapter()});
 
 
 test('Header component renders', () => {
-  const component = renderer.create(
-    <Header />,
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  const component: ShallowWrapper = shallow(<Header />);
+  expect(component).toMatchSnapshot();
 });
