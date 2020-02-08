@@ -1,0 +1,12 @@
+div.about {
+    display: inline-block;
+    text-align:center;
+}
+
+div.about ul li {
+    list-style: none;
+}
+
+.card-column {
+    padding-top: 16px;
+}
