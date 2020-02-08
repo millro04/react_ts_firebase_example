@@ -7,22 +7,28 @@ const docResult = {
   data: () => docData
 };
 const get = jest.fn(() => Promise.resolve(docResult));
-const set = jest.fn();
-const add = jest.fn(() => Promise.resolve());
+const firebaseSet = jest.fn(() => Promise.resolve());
+const firebaseAdd = jest.fn(() => Promise.resolve());
+const firebaseDelete = jest.fn(() => Promise.resolve());
+
+const doc = jest.fn(() => {
+  return {
+    set: firebaseSet,
+    get,
+    delete: firebaseDelete
+  };
+});
+
 const collection = () => {
   return {
     onSnapshot: jest.fn(),
-    add,
+    add: firebaseAdd,
+    doc
   }
 };
-const doc = jest.fn(() => {
-  return {
-    set,
-    get,
-  };
-});
+
 const firestore = () => {
-  return { doc, collection };
+  return { collection };
 };
 
-export { firestore, add };
+export { firestore, firebaseAdd, firebaseDelete, firebaseSet };

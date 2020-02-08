@@ -5,14 +5,13 @@ import { shallow, ShallowWrapper, configure, ReactWrapper, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 import firebase from '../../services/Firebase/Firebase';
-import { firestore, add } from '../../services/Firebase/__mocks__/Firebase';
+import { firestore, firebaseAdd, firebaseDelete, firebaseSet } from '../../services/Firebase/__mocks__/Firebase';
 firebase.firestore = firestore;
 
 test('Data Entry component renders', () => {
     const component: ShallowWrapper = shallow(<DataEntry />);
     expect(component).toMatchSnapshot();
 });
-
 
 test('Data Entry Component renders its View Component', () => {
   const component: ShallowWrapper = shallow(<DataEntry />);
@@ -26,9 +25,27 @@ test('Data Entry Component calls add on Firebase when onRowAdd is triggered', as
         min_read: 60,
         date: '2020-02-01'
     });
-
-    expect(add).toHaveBeenCalled();
+    expect(firebaseAdd).toHaveBeenCalled();
   });
+
+test('Data Entry Component calls delete on Firebase when onRowDelete is triggered', async () => {
+    const component: ShallowWrapper = shallow(<DataEntry />);
+    await component.instance().onRowDelete({id: 0});
+    expect(firebaseDelete).toHaveBeenCalled();
+});
+
+test('Data Entry Component calls set on Firebase when onRowUpdate is triggered', async () => {
+    const component: ShallowWrapper = shallow(<DataEntry />);
+    await component.instance().onRowUpdate(
+        {
+            book_name: 'test',
+            min_read: 60,
+            date: '2020-02-01'
+        },
+        {id: 0});
+    expect(firebaseSet).toHaveBeenCalled();
+  });
+
 
 
 test('Data Entry View renders', () => {
