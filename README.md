@@ -31,3 +31,12 @@ Next improvement steps on this repository would be the following:
 * Enhance the Dashboard to include more stats - like total minutes read per book, etc.
 
 ## Running The App
+* `npm install`
+* `npm start`
+
+
+## Testing The App
+* `npm test`
+
+## Testing With Coverage
+* `npm run coverage`
