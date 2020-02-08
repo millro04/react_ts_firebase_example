@@ -3,3 +3,5 @@
 exports[`Data Entry View renders 1`] = `ShallowWrapper {}`;
 
 exports[`Data Entry component renders 1`] = `ShallowWrapper {}`;
+
+exports[`DataEntryView snapshot test 1`] = `ShallowWrapper {}`;
