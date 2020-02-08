@@ -11,6 +11,7 @@ Reading Tracker is a web application designed to keep track of how many minutes 
 * Git
 
 ## Skills Demonstrated
+* Perform CRUD operations on resources in an external database
 * Unit testing on all components
 * Snapshot testing on all components
 * Continuous Integration via CircleCI on each commit
