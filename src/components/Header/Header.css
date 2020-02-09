@@ -6,3 +6,7 @@
 .header-text {
     font-size: 36px;
   }
+
+  .header-description {
+    padding-top: 10px;
+  }

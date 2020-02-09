@@ -41,12 +41,12 @@ test('formatBookDataForGraphs returns data in proper format', async () => {
     ];
     const expected = [
         {
-            title: 'Minutes Read Over Time - Book One',
+            title: 'Minutes Read Per Day - Book One',
             data: [15],
             labels: ['2020-02-01']
         },
         {
-            title: 'Minutes Read Over Time - Book Two',
+            title: 'Minutes Read Per Day - Book Two',
             data: [20],
             labels: ['2020-02-01']
         }

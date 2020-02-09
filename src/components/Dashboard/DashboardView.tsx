@@ -1,6 +1,7 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import './Dashboard.css';
 
 interface IGraphData {
     data: number[],
@@ -10,6 +11,24 @@ interface IGraphData {
 
 interface IDashboardViewProps {
     ListGraphData: IGraphData[]
+}
+
+const chartOptions = {
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Minutes'
+      }
+    }],
+    xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: 'Date'
+      }
+    }]
+  },
+  maintainAspectRatio: false
 }
 
 export default class DashboardView extends React.Component<IDashboardViewProps, any> {
@@ -38,18 +57,18 @@ export default class DashboardView extends React.Component<IDashboardViewProps, 
             pointHoverBackgroundColor: 'rgba(75,192,192,1)',
             pointHoverBorderColor: 'rgba(220,220,220,1)',
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 4,
             pointHitRadius: 10,
             data: data
           }
         ]
       };
       return (
-        <Col xs={6} sm={6} md={6} lg={6}>
+        <Col className='graph' xs={6} sm={6} md={6} lg={6}>
             <Line
                 data={graphData}
                 height={300}
-                options={{ maintainAspectRatio: false }} />
+                options={chartOptions} />
         </Col>
       );
   }

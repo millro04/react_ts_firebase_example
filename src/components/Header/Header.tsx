@@ -7,6 +7,9 @@ const Header = () => {
       <header className="header-text">
           Reading Tracker
       </header>
+      <div className='header-description'>
+        This a small app designed to track how many minutes you've spent reading per day.
+      </div>
     </div>
   );
 }

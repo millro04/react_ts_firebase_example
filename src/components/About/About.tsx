@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid';
 
 const style = {
   root: {
-    width: 400,
-    minHeight: 150
+    width: 420,
+    minHeight: 150,
   },
   title: {
     fontSize: 20,
@@ -38,7 +38,7 @@ const About = () => {
             <Card>
         <CardContent>
             <Typography style={style.purposeTitle} color="textSecondary" gutterBottom>
-            This is a web application to keep track of how many minutes I've read for various books. <br></br> Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this idea seemed like a good fit.
+            This is a web application to keep track of how many minutes you spend reading on various books. <br></br> Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this idea seemed like a good fit.
             </Typography>
         </CardContent>
     </Card>
@@ -53,10 +53,10 @@ const About = () => {
                 <Card style={style.root}>
                     <CardContent>
                         <Typography style={style.title} color="textSecondary" gutterBottom>
-                        ReactJS
+                        ReactJS and Typescript
                         </Typography>
                         <Typography variant="body2" component="p">
-                        Utilized React to create the single page Javascript application.
+                        Utilized React and Typescript to create the single page Javascript application.
                         </Typography>
                     </CardContent>
                 </Card>

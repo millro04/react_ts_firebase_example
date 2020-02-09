@@ -53,7 +53,7 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
                 resultsObj[elem.book_name].labels.push(elem.date);
                 resultsObj[elem.book_name].data.push(elem.min_read);
             } else {
-                resultsObj[elem.book_name] = {labels: [elem.date], data: [elem.min_read], title: `Minutes Read Over Time - ${elem.book_name}`}
+                resultsObj[elem.book_name] = {labels: [elem.date], data: [elem.min_read], title: `Minutes Read Per Day - ${elem.book_name}`}
             }
         });
     Object.keys(resultsObj).forEach(function(key) {
