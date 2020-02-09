@@ -1,11 +1,12 @@
 import React from 'react';
 import DataEntryView from './DataEntryView';
 import firebase from '../../services/Firebase/Firebase';
+import { IDataEntryState } from './DataEntry.types';
 
 const columns = [
   {
     title: 'Date',
-    field: 'date'
+    field: 'date_read'
   },
   {
     title: 'Book',
@@ -13,17 +14,12 @@ const columns = [
   },
   {
     title: 'Minutes Read',
-    field: 'min_read'
+    field: 'minutes_read'
   },
 ];
 
-interface IDataEntryState {
-  bookData: any,
-  isLoading: boolean
-}
-
 export default class DataEntry extends React.Component<any, IDataEntryState> {
-  firebaseRef: any;
+  firebaseRef: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
   constructor(props: React.ReactPropTypes) {
       super(props);
       this.onRowAdd = this.onRowAdd.bind(this);
@@ -43,9 +39,9 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
       const { book_name, date_read, minutes_read } = doc.data();
       bookData.push(
         {
-          date: date_read,
-          book_name: book_name,
-          min_read: minutes_read,
+          date_read,
+          book_name,
+          minutes_read,
           id: doc.id,
         });
         this.setState({
@@ -60,8 +56,8 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
       try {
         this.firebaseRef.add({
           book_name: newData.book_name,
-          minutes_read: parseInt(newData.min_read),
-          date_read: newData.date,
+          minutes_read: parseInt(newData.minutes_read),
+          date_read: newData.date_read,
         }).then((docRef: any) => {
           console.log('Successfully added book data');
           resolve();
@@ -84,8 +80,8 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
       try {
         const updateRef = this.firebaseRef.doc(oldData.id);
         updateRef.set({
-          date_read: newData.date,
-          minutes_read: newData.min_read,
+          date_read: newData.date_read,
+          minutes_read: newData.minutes_read,
           book_name: newData.book_name,
         }).then((docRef: any) => {
           console.log('Update successful');

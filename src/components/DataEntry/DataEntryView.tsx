@@ -2,8 +2,13 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import './DataEntry.css';
 
+interface TableColumn {
+  title: string,
+  field: string
+}
+
 interface IDataEntryViewProps {
-  columns: any,
+  columns: TableColumn[],
   tableData: any,
   onRowAdd: any,
   onRowUpdate: any,

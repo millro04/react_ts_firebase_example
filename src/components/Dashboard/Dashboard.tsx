@@ -1,20 +1,11 @@
 import React from 'react';
 import DashboardView from './DashboardView';
 import firebase from '../../services/Firebase/Firebase';
-
-interface IBookData {
-    date: string,
-    book_name: string,
-    min_read: number, 
-}
-
-interface IDashboardState {
-    bookData: IBookData[]
-}
+import { IDashboardState, IGraphData } from './Dashboard.types';
 
 export default class Dashboard extends React.Component<any, IDashboardState> {
-
-  firebaseRef: any;
+  
+  firebaseRef: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
   constructor(props: React.ReactPropTypes) {
       super(props);
       this.firebaseRef = firebase.firestore().collection('reading_logs');
@@ -44,10 +35,13 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
     });
   }
 
-  formatBookDataForGraphs() {
+  formatBookDataForGraphs(): IGraphData[] {
+    // Sort by date in ascending order for the graphs
+    const sortedBooks = this.state.bookData.sort((a, b) => a.date.localeCompare(b.date));
+
     let resultsObj: any = {};
     let resultsArray: any = [];
-    this.state.bookData.forEach(
+    sortedBooks.forEach(
         elem => {
             if (resultsObj.hasOwnProperty(elem.book_name)) {
                 resultsObj[elem.book_name].labels.push(elem.date);
@@ -62,7 +56,6 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
                 title: resultsObj[key].title,
                 data: resultsObj[key].data,
                 labels: resultsObj[key].labels,
-
             }
         )
     });

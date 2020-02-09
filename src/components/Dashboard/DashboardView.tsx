@@ -1,17 +1,8 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import './Dashboard.css';
-
-interface IGraphData {
-    data: number[],
-    labels: string[],
-    title: string
-}
-
-interface IDashboardViewProps {
-    ListGraphData: IGraphData[]
-}
+import { IDashboardViewProps } from './Dashboard.types';
 
 const chartOptions = {
   scales: {
