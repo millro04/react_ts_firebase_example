@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import { shallow, ShallowWrapper, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter()});
+import { shallow, ShallowWrapper } from 'enzyme';
 
 
 test('Header component renders', () => {

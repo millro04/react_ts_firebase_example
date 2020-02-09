@@ -1,8 +1,6 @@
 import React from 'react';
 import About from './About';
-import { shallow, ShallowWrapper, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter()});
+import { shallow, ShallowWrapper } from 'enzyme';
 
 
 test('About component renders', () => {

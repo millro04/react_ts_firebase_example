@@ -24,7 +24,7 @@ export default class DataEntryView extends React.Component<IDataEntryViewProps, 
           style={{ width: '90%' }}
           columns={this.props.columns}
           data={this.props.tableData}
-          title="Reading Record"
+          title='Reading Record'
           editable={{
             onRowAdd: this.props.onRowAdd,
             onRowUpdate: this.props.onRowUpdate,

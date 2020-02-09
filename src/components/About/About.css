@@ -11,18 +11,3 @@ div.about ul li {
     padding-top: 16px;
     padding-left: 18px;
 }
-
-.card-root {
-    width: 420px;
-    min-height: 150px;
-}
-
-.card-title {
-    font-size: 20px;
-    padding-bottom: 6px;
-}
-
-.purpose-title {
-    font-size: 20px;
-    padding: 10px;
-}

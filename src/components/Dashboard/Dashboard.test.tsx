@@ -1,9 +1,7 @@
 import React from 'react';
 import Dashboard from './Dashboard';
 import DashboardView from './DashboardView';
-import { shallow, ShallowWrapper, configure, ReactWrapper, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter()});
+import { shallow, ShallowWrapper } from 'enzyme';
 import firebase from '../../services/Firebase/Firebase';
 import { firestore, onSnapshot } from '../../services/Firebase/__mocks__/Firebase';
 firebase.firestore = firestore;

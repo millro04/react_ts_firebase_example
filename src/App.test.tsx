@@ -1,10 +1,8 @@
 import React from 'react';
 import App from './App';
 import Header from './components/Header/Header';
-import { shallow, ShallowWrapper, configure, mount } from 'enzyme';
+import { shallow, ShallowWrapper, mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter()});
 
 
 test('App component renders', () => {

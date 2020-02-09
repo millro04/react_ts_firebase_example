@@ -3,8 +3,8 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <div className="header-wrapper">
-      <header className="header-text">
+    <div className='header-wrapper'>
+      <header className='header-text'>
           Reading Tracker
       </header>
       <div className='header-description'>
