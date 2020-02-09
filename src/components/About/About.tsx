@@ -37,7 +37,7 @@ const About = () => {
                 <Card>
                     <CardContent>
                         <Typography style={style.purposeTitle} color='textSecondary' gutterBottom>
-                        This is a web application to keep track of how many minutes you spend reading on various books.
+                        This is a web application to keep track of how many minutes you spend reading books.
                         <br></br>Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this idea seemed like a good fit.
                         </Typography>
                     </CardContent>
@@ -107,7 +107,7 @@ const About = () => {
                             Deployment
                             </Typography>
                             <Typography variant='body2' component='p'>
-                            Deployed the app via Heroku.
+                            Deployed the app on Heroku.
                             </Typography>
                         </CardContent>
                     </Card>
