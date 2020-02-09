@@ -1,5 +1,8 @@
 **Reading Tracker** is a web application designed to keep track of how many minutes I've read for various books. Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this project seemed like a good fit.
 
+## Hosted Here
+* https://serene-oasis-08498.herokuapp.com/
+
 ## Features
 * Allows a user to perform CRUD operations on their book entries
 * Provides a dashboard of graphs for each book
@@ -12,16 +15,12 @@
 
 ## Skills Demonstrated
 * Perform CRUD operations on resources in an external database
-* Unit testing on all components
-* Snapshot testing on all components
+* Unit and snapshot testing on React components
 * Testing with Jest and Enzyme
 * Continuous Integration via CircleCI on each commit
 * Separation of concerns using presentational components
 * React Routing
 * Deployed live on Heroku
-
-## Hosted Here
-* https://serene-oasis-08498.herokuapp.com/
 
 ## Next Steps
 Next improvement steps on this repository would be the following:
@@ -34,9 +33,9 @@ Next improvement steps on this repository would be the following:
 * `npm install`
 * `npm start`
 
-
 ## Testing The App
 * `npm test`
+* `npm test -- --updateSnapshot`
 
 ## Testing With Coverage
 * `npm run coverage`
