@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import firestore from 'firebase/firestore'
 
 // TODO: Would not hard-code these for production.
 const config = {

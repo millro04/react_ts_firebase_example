@@ -17,10 +17,6 @@ interface IDataEntryViewProps {
 }
 
 export default class DataEntryView extends React.Component<IDataEntryViewProps, any> {
-  constructor(props : IDataEntryViewProps) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='data-entry-wrapper'>

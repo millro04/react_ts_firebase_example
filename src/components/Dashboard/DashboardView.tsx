@@ -23,9 +23,6 @@ const chartOptions = {
 }
 
 export default class DashboardView extends React.Component<IDashboardViewProps, any> {
-  constructor(props: any) {
-    super(props);
-  }
 
   renderGraph(labels: string[], data: number[], title: string) {
     const graphData: any = {

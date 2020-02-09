@@ -34,6 +34,7 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
   }
 
   onReadingCollectionUpdate = (querySnapshot: any) => {
+    // Retrieves data from the database and sets component state.
     const bookData: any = [];
     querySnapshot.forEach((doc: any) => {
       const { book_name, date_read, minutes_read } = doc.data();
@@ -52,6 +53,7 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
   }
 
   onRowAdd(newData: any) {
+    // Inserts new data into the database
     return new Promise((resolve, reject) => {
       try {
         this.firebaseRef.add({
@@ -59,11 +61,9 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
           minutes_read: parseInt(newData.minutes_read),
           date_read: newData.date_read,
         }).then((docRef: any) => {
-          console.log('Successfully added book data');
           resolve();
         })
         .catch((error: any) => {
-          console.error("Error saving reading data: ", error);
           reject(error);
         });
       }
@@ -75,16 +75,16 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
   }
 
   onRowUpdate(newData: any, oldData: any) {
+    // Updates an existing record in the database
     return new Promise((resolve, reject) => {
 
       try {
-        const updateRef = this.firebaseRef.doc(oldData.id);
-        updateRef.set({
+        const documentToUpdateRef = this.firebaseRef.doc(oldData.id);
+        documentToUpdateRef.set({
           date_read: newData.date_read,
           minutes_read: newData.minutes_read,
           book_name: newData.book_name,
         }).then((docRef: any) => {
-          console.log('Update successful');
         resolve();
       });
     }
@@ -95,11 +95,10 @@ export default class DataEntry extends React.Component<any, IDataEntryState> {
   }
 
   onRowDelete(oldData: any) {
+    // Deletes existing record in the database
     return new Promise((resolve, reject) => {
-
       try {
         this.firebaseRef.doc(oldData.id).delete().then((docRef: any) => {
-        console.log('Delete successful');
         resolve();
       });
     }
