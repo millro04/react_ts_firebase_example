@@ -24,9 +24,9 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
       const { book_name, date_read, minutes_read } = doc.data();
       bookData.push(
         {
-          date: date_read,
-          book_name: book_name,
-          min_read: minutes_read,
+          date_read,
+          book_name,
+          minutes_read,
           id: doc.id,
         });
         this.setState({
@@ -37,17 +37,17 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
 
   formatBookDataForGraphs(): IGraphData[] {
     // Sort by date in ascending order for the graphs
-    const sortedBooks = this.state.bookData.sort((a, b) => a.date.localeCompare(b.date));
+    const sortedBooks = this.state.bookData.sort((a, b) => a.date_read.localeCompare(b.date_read));
 
     let resultsObj: any = {};
     let resultsArray: any = [];
     sortedBooks.forEach(
         elem => {
             if (resultsObj.hasOwnProperty(elem.book_name)) {
-                resultsObj[elem.book_name].labels.push(elem.date);
-                resultsObj[elem.book_name].data.push(elem.min_read);
+                resultsObj[elem.book_name].labels.push(elem.date_read);
+                resultsObj[elem.book_name].data.push(elem.minutes_read);
             } else {
-                resultsObj[elem.book_name] = {labels: [elem.date], data: [elem.min_read], title: `Minutes Read Per Day - ${elem.book_name}`}
+                resultsObj[elem.book_name] = {labels: [elem.date_read], data: [elem.minutes_read], title: `Minutes Read Per Day - ${elem.book_name}`}
             }
         });
     Object.keys(resultsObj).forEach(function(key) {

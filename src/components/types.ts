@@ -1,7 +1,7 @@
 // Shared types across multiple components
 
 export interface IBookData {
-    date: string,
+    date_read: string,
     book_name: string,
-    min_read: number, 
+    minutes_read: number, 
 }

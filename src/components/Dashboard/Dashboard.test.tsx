@@ -28,13 +28,13 @@ test('formatBookDataForGraphs returns data in proper format', async () => {
     const input = [
         {
             book_name: 'Book One',
-            min_read: 15,
-            date: '2020-02-01'
+            minutes_read: 15,
+            date_read: '2020-02-01'
         },
         {
             book_name: 'Book Two',
-            min_read: 20,
-            date: '2020-02-01'
+            minutes_read: 20,
+            date_read: '2020-02-01'
         }
     ];
     const expected = [
