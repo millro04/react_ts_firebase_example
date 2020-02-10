@@ -18,6 +18,7 @@
 * Unit and snapshot testing on React components
 * Testing with Jest and Enzyme
 * Continuous Integration via CircleCI on each commit
+* Pre-commit and pre-push hooks to automatically run tests
 * Separation of concerns using presentational components
 * React Routing
 * Deployed live on Heroku
