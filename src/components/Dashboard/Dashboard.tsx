@@ -4,14 +4,14 @@ import firebase from '../../services/Firebase/Firebase';
 import { IDashboardState, IGraphData } from './Dashboard.types';
 
 export default class Dashboard extends React.Component<any, IDashboardState> {
-  
   firebaseRef: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
+
   constructor(props: React.ReactPropTypes) {
-      super(props);
-      this.firebaseRef = firebase.firestore().collection('reading_logs');
-      this.state = {
-          bookData: []
-      }
+    super(props);
+    this.firebaseRef = firebase.firestore().collection('reading_logs');
+    this.state = {
+      bookData: [],
+    };
   }
 
   componentDidMount() {
@@ -19,54 +19,50 @@ export default class Dashboard extends React.Component<any, IDashboardState> {
   }
 
   onReadingCollectionUpdate = (querySnapshot: any) => {
+    // Whenever the db collection is updated, fire this method and update the state.
     const bookData: any = [];
     querySnapshot.forEach((doc: any) => {
       const { book_name, date_read, minutes_read } = doc.data();
-      bookData.push(
-        {
-          date_read,
-          book_name,
-          minutes_read,
-          id: doc.id,
-        });
-        this.setState({
-          bookData
-       });
+      bookData.push({
+        dateRead: date_read,
+        bookName: book_name,
+        minutesRead: minutes_read,
+        id: doc.id,
+      });
+      this.setState({
+        bookData,
+      });
     });
-  }
+  };
 
   formatBookDataForGraphs(): IGraphData[] {
-    // Sort by date in ascending order for the graphs
-    const sortedBooks = this.state.bookData.sort((a, b) => a.date_read.localeCompare(b.date_read));
+    const sortedBooks = this.state.bookData.sort((a, b) => a.dateRead.localeCompare(b.dateRead));
 
-    let resultsObj: any = {};
-    let resultsArray: any = [];
-    sortedBooks.forEach(
-        elem => {
-            if (resultsObj.hasOwnProperty(elem.book_name)) {
-                resultsObj[elem.book_name].labels.push(elem.date_read);
-                resultsObj[elem.book_name].data.push(elem.minutes_read);
-            } else {
-                resultsObj[elem.book_name] = {labels: [elem.date_read], data: [elem.minutes_read], title: `Minutes Read Per Day - ${elem.book_name}`}
-            }
-        });
+    const resultsObj: any = {};
+    const resultsArray: any = [];
+    sortedBooks.forEach(elem => {
+      if (resultsObj.hasOwnProperty(elem.bookName)) {
+        resultsObj[elem.bookName].labels.push(elem.dateRead);
+        resultsObj[elem.bookName].data.push(elem.minutesRead);
+      } else {
+        resultsObj[elem.bookName] = {
+          labels: [elem.dateRead],
+          data: [elem.minutesRead],
+          title: `Minutes Read Per Day - ${elem.bookName}`,
+        };
+      }
+    });
     Object.keys(resultsObj).forEach(function(key) {
-        resultsArray.push(
-            {
-                title: resultsObj[key].title,
-                data: resultsObj[key].data,
-                labels: resultsObj[key].labels,
-            }
-        )
+      resultsArray.push({
+        title: resultsObj[key].title,
+        data: resultsObj[key].data,
+        labels: resultsObj[key].labels,
+      });
     });
     return resultsArray;
   }
 
   render() {
-    return (
-      <DashboardView
-        ListGraphData={this.formatBookDataForGraphs()}
-        />
-    );
+    return <DashboardView ListGraphData={this.formatBookDataForGraphs()} />;
   }
 }

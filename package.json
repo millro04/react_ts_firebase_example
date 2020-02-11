@@ -45,9 +45,6 @@
       "pre-push": "npm test"
     }
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -62,11 +59,19 @@
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.13",
+    "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.0",
     "enzyme": "^3.11.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-react": "^7.18.3",
     "husky": "^4.2.1",
     "i": "^0.3.6",
     "npm": "^6.13.7",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.12.0"
   }

@@ -1,38 +1,25 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import './DataEntry.css';
+import { IDataEntryViewProps } from './DataEntry.types';
 
-interface TableColumn {
-  title: string,
-  field: string
+const DataEntryView = (props: IDataEntryViewProps) => {
+  return (
+    <div className="data-entry-wrapper">
+      <MaterialTable
+        style={{ width: '90%' }}
+        columns={props.columns}
+        data={props.tableData}
+        title="Reading Record"
+        editable={{
+          onRowAdd: props.onRowAdd,
+          onRowUpdate: props.onRowUpdate,
+          onRowDelete: props.onRowDelete,
+        }}
+        isLoading={props.isLoading}
+      />
+    </div>
+  );
 }
 
-interface IDataEntryViewProps {
-  columns: TableColumn[],
-  tableData: any,
-  onRowAdd: any,
-  onRowUpdate: any,
-  onRowDelete: any,
-  isLoading: boolean
-}
-
-export default class DataEntryView extends React.Component<IDataEntryViewProps, any> {
-  render() {
-    return (
-      <div className='data-entry-wrapper'>
-        <MaterialTable
-          style={{ width: '90%' }}
-          columns={this.props.columns}
-          data={this.props.tableData}
-          title='Reading Record'
-          editable={{
-            onRowAdd: this.props.onRowAdd,
-            onRowUpdate: this.props.onRowUpdate,
-            onRowDelete: this.props.onRowDelete
-          }}
-          isLoading={this.props.isLoading}
-        />
-      </div>
-    );
-  }
-}
+export default DataEntryView;

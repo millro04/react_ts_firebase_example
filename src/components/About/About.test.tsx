@@ -1,7 +1,6 @@
 import React from 'react';
-import About from './About';
 import { shallow, ShallowWrapper } from 'enzyme';
-
+import About from './About';
 
 test('About component renders', () => {
   const component: ShallowWrapper = shallow(<About />);

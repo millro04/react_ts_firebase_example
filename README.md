@@ -25,10 +25,11 @@
 
 ## Next Steps
 Next improvement steps on this repository would be the following:
-* Implement login/logout flow, so each user can have their own book record
+* Implement login/logout, so each user can have their own book record
+    * State Management (Redux)
 * Automate creation of Firebase database
 * Implement calendar picker on the DataEntry table
-* Enhance the Dashboard to include more stats - like total minutes read per book, etc.
+* Enhance the Dashboard to include more stats
 
 ## Running The App
 * `npm install`
