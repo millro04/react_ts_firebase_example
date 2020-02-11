@@ -126,6 +126,7 @@ const About = () => {
                 </Typography>
                 <Typography variant="body2" component="p">
                   Utilized Git & Github for source control.
+                  {' '}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
