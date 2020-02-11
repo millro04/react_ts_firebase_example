@@ -11,7 +11,7 @@
 * Provides a dashboard of graphs for each book
 
 ## Technology Used
-* ReactJS
+* React
 * Typescript
 * Firebase database
 * Git
