@@ -1,5 +1,6 @@
 **Reading Tracker** is a web application designed to keep track of how many minutes I've read for various books. Given the theme of education and classroom technology, along with the fact that I am trying to read more myself, this project seemed like a good fit.
 
+## Build Status
 [![CircleCI](https://circleci.com/gh/millro04/reading_tracker.svg?style=svg)](https://circleci.com/gh/millro04/reading_tracker)
 
 ## Hosted Here
