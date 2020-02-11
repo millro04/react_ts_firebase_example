@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/millro04/reading_tracker.svg?style=svg)](https://circleci.com/gh/millro04/reading_tracker)
 
 ## Hosted Here
-* https://serene-oasis-08498.herokuapp.com/
+* https://my-reading-tracker.herokuapp.com/
 
 ## Features
 * Allows a user to perform CRUD operations on their book entries
