@@ -58,7 +58,7 @@ const About = () => {
                   ReactJS and Typescript
                 </Typography>
                 <Typography variant="body2" component="p">
-                  Utilized React and Typescript to create the single page Javascript application.
+                  Used React and Typescript to create the single page Javascript application.
                 </Typography>
               </CardContent>
             </Card>
